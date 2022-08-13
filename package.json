@@ -13,9 +13,13 @@
     "prettier:fix": "npm run prettier -- --write",
     "format": "npm run prettier:fix && npm run lint:fix",
     "typescript": "tsc --project tsconfig.json --noEmit",
-    "lint-staged": "lint-staged --config lint-staged.js",
-    "husky-install": "husky install"
+    "prepare": "husky install"
   },
+    "husky": {
+      "hooks": {
+        "pre-commit": "echo 'teste'"
+      }
+    },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
