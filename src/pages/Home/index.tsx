@@ -1,3 +1,10 @@
+import { HomeContainer } from './styles';
+import Illustration from '../../assets/Illustration.svg';
+
 export function Home() {
-  return <h1>Home</h1>;
+  return (
+    <HomeContainer>
+      <img src={Illustration} alt='' />
+    </HomeContainer>
+  );
 }
