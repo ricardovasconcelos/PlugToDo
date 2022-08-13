@@ -15,11 +15,10 @@
     "typescript": "tsc --project tsconfig.json --noEmit",
     "prepare": "husky install"
   },
-    "husky": {
-      "hooks": {
-        "pre-commit": "echo 'teste'"
-      }
-    },
+  "lint-staged": {
+    "src/**/*.{js,html.css}": "prettier --write",
+    "src/**/*.js": "eslint"
+  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
