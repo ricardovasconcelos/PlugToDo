@@ -14,13 +14,9 @@ export const ButtonComponent = styled.button<ButtonProps>`
   color: ${(props) => props.theme['white-100']};
   background-color: ${(props) => props.theme['brand-100']};
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: filter 0.2s;
 
   &:hover {
-    background-color: var(--blue);
-  }
-  &:disabled {
-    background-color: var(--blue-dark);
-    cursor: not-allowed;
+    filter: opacity(90%);
   }
 `;
