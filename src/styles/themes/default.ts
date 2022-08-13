@@ -15,7 +15,9 @@ export const defaultTheme = {
   'secondary-100': '#00BFA5',
 
   'black-100': '#1D1F2A',
+
   'blue-100': '#344383',
   'blue-500': '#141B4D',
+
   'red-500': '#E40022',
 };
