@@ -33,7 +33,6 @@ export const NewTaskButton = styled(Button)`
   border-radius: 100px;
   font-size: 0.875rem;
   line-height: 150%;
-  letter-spacing: 0.0781rem;
 
   display: flex;
   align-items: center;

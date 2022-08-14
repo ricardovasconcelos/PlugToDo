@@ -15,6 +15,7 @@ export const ButtonComponent = styled.button<ButtonProps>`
   background-color: ${(props) => props.theme['brand-100']};
   cursor: pointer;
   transition: filter 0.2s;
+  letter-spacing: 0.0781rem;
 
   &:hover {
     filter: opacity(90%);

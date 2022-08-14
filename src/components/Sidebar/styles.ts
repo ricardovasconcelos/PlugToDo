@@ -24,6 +24,10 @@ export const SidebarWrapper = styled.div`
   height: 100vh;
   background-color: ${(props) => props.theme['white-100']};
   color: ${(props) => props.theme['black-100']};
+
+  @media (max-width: 768px) {
+    width: 100vw;
+  }
 `;
 
 export const SidebarHeader = styled.header`
@@ -58,6 +62,12 @@ export const CloseSidebar = styled.button`
 
 export const SidebarContent = styled.div`
   flex: 1;
+  width: 100%;
+  padding: 2rem;
+
+  * {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 export const SidebarFooter = styled.footer`

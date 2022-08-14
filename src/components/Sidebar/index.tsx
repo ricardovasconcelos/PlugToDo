@@ -1,6 +1,7 @@
 import { useRef, useEffect, useCallback, MouseEvent } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Button } from '../Button';
+import { Input } from '../Input';
 
 import {
   SidebarContainer,
@@ -63,7 +64,9 @@ export const Sidebar = ({ showSidebar, onShowSidebar }: SidebarProps) => {
               </SidebarHeader>
 
               <SidebarContent>
-                <h1>content</h1>
+                <Input placeholder='Título' />
+
+                <Input placeholder='Descrição' />
               </SidebarContent>
 
               <SidebarFooter>
