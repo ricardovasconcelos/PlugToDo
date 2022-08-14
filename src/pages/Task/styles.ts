@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const TaskContainer = styled.main`
-  border: 1px solid red;
-
   display: flex;
   padding-top: 10rem;
   justify-content: space-evenly;
