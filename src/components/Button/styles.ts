@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface ButtonProps {
-  width: number;
+  width?: number;
 }
 
 export const ButtonComponent = styled.button<ButtonProps>`

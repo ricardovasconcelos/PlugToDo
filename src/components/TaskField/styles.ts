@@ -31,7 +31,7 @@ export const TaskFieldContainer = styled.div<TaskFieldContainerProps>`
     border-top-left-radius: 9px;
     border-bottom-left-radius: 9px;
     background-color: ${(props) =>
-      props.done ? props.theme['secondary-100'] : props.theme['blue-500']};
+      props.done ? props.theme['secondary-100'] : props.theme['blue-100']};
   }
 `;
 

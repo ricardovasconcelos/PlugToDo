@@ -4,7 +4,7 @@ import { ButtonComponent } from './styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  width: number;
+  width?: number;
 }
 
 export function Button({ children, ...props }: ButtonProps) {

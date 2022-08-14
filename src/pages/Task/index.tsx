@@ -1,7 +1,17 @@
 import { TaskField } from '../../components/TaskField';
-import { TaskContainer, TitleStatus, Divisor } from './styles';
+import { TaskContainer, TitleStatus, Divisor, NewTaskButton } from './styles';
+
+import plus from '../../assets/plus.svg';
+import { Sidebar } from '../../components/Sidebar';
+import { useState } from 'react';
 
 export function Task() {
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const handleOpenSidebar = () => {
+    setShowSidebar((prevState) => !prevState);
+  };
+
   return (
     <TaskContainer>
       <div>
@@ -28,6 +38,13 @@ export function Task() {
           done={true}
         />
       </div>
+
+      <NewTaskButton onClick={handleOpenSidebar}>
+        <img src={plus} alt='Ícone com símbolo mais' />
+        NOVO
+      </NewTaskButton>
+
+      <Sidebar showSidebar={showSidebar} onShowSidebar={handleOpenSidebar} />
     </TaskContainer>
   );
 }

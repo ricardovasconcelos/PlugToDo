@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '../../components/Button';
 
 export const TaskContainer = styled.main`
   display: flex;
@@ -23,4 +24,23 @@ export const Divisor = styled.hr`
   height: inherit;
   min-height: 20rem;
   margin: 3rem 0 5rem;
+`;
+
+export const NewTaskButton = styled(Button)`
+  position: absolute;
+  bottom: 3%;
+  right: 2%;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  line-height: 150%;
+  letter-spacing: 0.0781rem;
+
+  display: flex;
+  align-items: center;
+
+  width: 6.8125rem;
+
+  img {
+    padding-right: 5px;
+  }
 `;
