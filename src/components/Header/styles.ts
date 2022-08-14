@@ -9,4 +9,10 @@ export const HeaderContainer = styled.header`
   img {
     margin-left: 1rem;
   }
+
+  a {
+    &:focus {
+      box-shadow: none;
+    }
+  }
 `;
