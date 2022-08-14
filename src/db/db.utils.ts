@@ -10,6 +10,14 @@ export const tasks: Task[] = [
     done: false,
   },
   { id: '2', title: 'Fazer café', description: '', done: true },
+  { id: '3', title: 'Ir ao supermercado', description: 'Comprar pão e queijo', done: false },
+  { id: '4', title: 'Academia', description: 'Treino de peito', done: true },
+  {
+    id: '5',
+    title: 'Estudar sobre complexidade de algoritmos',
+    description: 'Big O e algoritmos de ordenação',
+    done: true,
+  },
 ];
 
 export function successResponse(status: number, data?: any) {

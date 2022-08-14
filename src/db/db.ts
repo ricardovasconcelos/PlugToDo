@@ -16,6 +16,7 @@ export function makeServer() {
 
     routes() {
       this.namespace = 'api';
+      this.urlPrefix = 'http://localhost:3000';
 
       this.get('/tasks', () => {
         const tasks = this.schema.all('task');

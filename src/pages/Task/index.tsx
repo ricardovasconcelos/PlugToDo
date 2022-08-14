@@ -4,6 +4,7 @@ import { TaskContainer, TitleStatus, Divisor, NewTaskButton } from './styles';
 import plus from '../../assets/plus.svg';
 import { Sidebar } from '../../components/Sidebar';
 import { useState } from 'react';
+import { useTasks } from '../../hooks/useTasks';
 
 export function Task() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -12,31 +13,44 @@ export function Task() {
     setShowSidebar((prevState) => !prevState);
   };
 
+  const { tasks } = useTasks();
+
   return (
     <TaskContainer>
       <div>
         <TitleStatus>TO DO</TitleStatus>
-        <TaskField
-          title='Criar projeto para Plug Criar projeto para Plug'
-          description='Desenvolver o PlugToDo '
-          done={false}
-        />
-        <TaskField
-          title='Criar projeto para Plug'
-          description='Desenvolver o PlugToDo'
-          done={false}
-        />
+        {tasks?.map((task) => {
+          const isTaskDone = task.done;
+          if (!isTaskDone) {
+            return (
+              <TaskField
+                key={task.id}
+                title={task.title}
+                description={task.description}
+                done={task.done}
+              />
+            );
+          }
+        })}
       </div>
 
       <Divisor />
 
       <div>
         <TitleStatus>DONE</TitleStatus>
-        <TaskField
-          title='Criar projeto para Plug'
-          description='Desenvolver o PlugToDo'
-          done={true}
-        />
+        {tasks?.map((task) => {
+          const isTaskDone = task.done;
+          if (isTaskDone) {
+            return (
+              <TaskField
+                key={task.id}
+                title={task.title}
+                description={task.description}
+                done={task.done}
+              />
+            );
+          }
+        })}
       </div>
 
       <NewTaskButton onClick={handleOpenSidebar}>

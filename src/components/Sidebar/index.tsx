@@ -1,7 +1,13 @@
-import { useRef, useEffect, useCallback, MouseEvent } from 'react';
+import { useRef, useEffect, useState, useCallback, MouseEvent } from 'react';
 import { useSpring, animated } from 'react-spring';
+
 import { Button } from '../Button';
 import { Input } from '../Input';
+
+import close from '../../assets/close.svg';
+import { Switch } from '../Switch';
+
+import { useTasks } from '../../hooks/useTasks';
 
 import {
   SidebarContainer,
@@ -12,16 +18,19 @@ import {
   SidebarFooter,
 } from './styles';
 
-import close from '../../assets/close.svg';
-import { Switch } from '../Switch';
-
 interface SidebarProps {
   showSidebar: boolean;
   onShowSidebar: (value: boolean) => void;
 }
 
 export const Sidebar = ({ showSidebar, onShowSidebar }: SidebarProps) => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [done, setDone] = useState(false);
+
   const sidebarRef = useRef<HTMLDivElement>(null);
+
+  const { createTask } = useTasks();
 
   const animation = useSpring({
     config: {
@@ -30,12 +39,6 @@ export const Sidebar = ({ showSidebar, onShowSidebar }: SidebarProps) => {
     opacity: showSidebar ? 1 : 0,
     transform: showSidebar ? `translateY(0%)` : `translateY(-100%)`,
   });
-
-  const closeSidebar = (event: MouseEvent<HTMLDivElement>) => {
-    if (sidebarRef.current === event.target) {
-      onShowSidebar(false);
-    }
-  };
 
   const keyPress = useCallback(
     (event: KeyboardEvent) => {
@@ -51,6 +54,32 @@ export const Sidebar = ({ showSidebar, onShowSidebar }: SidebarProps) => {
     return () => document.removeEventListener('keydown', keyPress);
   }, [keyPress]);
 
+  function closeSidebar(event: MouseEvent<HTMLDivElement>) {
+    if (sidebarRef.current === event.target) {
+      onShowSidebar(false);
+    }
+  }
+
+  function resetFormsOnCreateNewTask() {
+    setTitle('');
+    setDescription('');
+    setDone(false);
+  }
+
+  function handleCreateNewTask() {
+    try {
+      createTask({
+        title,
+        description,
+        done,
+      });
+      onShowSidebar(false);
+      resetFormsOnCreateNewTask();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <>
       {showSidebar ? (
@@ -65,15 +94,29 @@ export const Sidebar = ({ showSidebar, onShowSidebar }: SidebarProps) => {
               </SidebarHeader>
 
               <SidebarContent>
-                <Input placeholder='Título' />
+                <Input
+                  placeholder='Título'
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                />
 
-                <Input placeholder='Descrição' />
+                <Input
+                  placeholder='Descrição'
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
+                />
 
-                <Switch label='Done' />
+                <Switch
+                  label='Done'
+                  checked={done}
+                  onChange={() => setDone((prevState) => !prevState)}
+                />
               </SidebarContent>
 
               <SidebarFooter>
-                <Button width={20}>CRIAR TAREFA</Button>
+                <Button width={20} onClick={handleCreateNewTask} disabled={!title}>
+                  CRIAR TAREFA
+                </Button>
               </SidebarFooter>
             </SidebarWrapper>
           </animated.div>
