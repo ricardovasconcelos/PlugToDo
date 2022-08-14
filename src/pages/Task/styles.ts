@@ -4,6 +4,10 @@ export const TaskContainer = styled.main`
   display: flex;
   padding: 6rem 5rem 0;
   justify-content: space-evenly;
+
+  @media (max-width: 768px) {
+    padding: 6rem 0;
+  }
 `;
 
 export const TitleStatus = styled.h1`

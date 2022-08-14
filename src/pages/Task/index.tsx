@@ -8,7 +8,7 @@ export function Task() {
         <TitleStatus>TO DO</TitleStatus>
         <TaskField
           title='Criar projeto para Plug Criar projeto para Plug'
-          description='Desenvolver o PlugToDo'
+          description='Desenvolver o PlugToDo '
           done={false}
         />
         <TaskField

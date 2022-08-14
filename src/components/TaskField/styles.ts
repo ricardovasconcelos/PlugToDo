@@ -15,6 +15,14 @@ export const TaskFieldContainer = styled.div<TaskFieldContainerProps>`
   display: flex;
   align-items: flex-start;
 
+  @media (max-width: 880px) {
+    width: 17rem;
+  }
+
+  @media (max-width: 570px) {
+    width: 10rem;
+  }
+
   &::before {
     content: '';
     min-width: 0.75rem;
@@ -37,6 +45,14 @@ export const TaskDetailContainer = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+
+    @media (max-width: 880px) {
+      width: 10rem;
+    }
+
+    @media (max-width: 570px) {
+      width: 7rem;
+    }
   }
 
   p {
