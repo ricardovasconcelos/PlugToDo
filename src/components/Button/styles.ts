@@ -20,4 +20,9 @@ export const ButtonComponent = styled.button<ButtonProps>`
   &:hover {
     filter: opacity(90%);
   }
+
+  &:disabled {
+    background-color: ${(props) => props.theme['gray-200']};
+    color: ${(props) => props.theme['gray-700']};
+  }
 `;
