@@ -13,6 +13,7 @@ import {
 } from './styles';
 
 import close from '../../assets/close.svg';
+import { Switch } from '../Switch';
 
 interface SidebarProps {
   showSidebar: boolean;
@@ -67,6 +68,8 @@ export const Sidebar = ({ showSidebar, onShowSidebar }: SidebarProps) => {
                 <Input placeholder='Título' />
 
                 <Input placeholder='Descrição' />
+
+                <Switch label='Done' />
               </SidebarContent>
 
               <SidebarFooter>

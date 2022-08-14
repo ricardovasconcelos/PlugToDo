@@ -65,7 +65,7 @@ export const SidebarContent = styled.div`
   width: 100%;
   padding: 2rem;
 
-  * {
+  *:not(:last-child) {
     margin-bottom: 1.5rem;
   }
 `;
