@@ -10,6 +10,10 @@ import { useDisableScroll } from '../../hooks/useDisableScroll';
 
 import { TaskContainer, TaskWrapper, TitleStatus, Divisor, NewTaskButton } from './styles';
 
+import { useDrop } from 'react-dnd';
+
+import { toast } from '../../lib/toast';
+
 export function Task() {
   const [showSidebar, setShowSidebar] = useState(false);
   const navigate = useNavigate();
@@ -25,11 +29,33 @@ export function Task() {
     handleOpenSidebar();
   }
 
-  const { tasks } = useTasks();
+  const { tasks, updateTask } = useTasks();
+
+  const [{ isOver }, toDoRef] = useDrop({
+    accept: 'doing',
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  });
+
+  const [{ isOver: isDoingOver }, doneRef] = useDrop({
+    accept: 'done',
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  });
+
+  const movePlayer = (item: any) => {
+    updateTask({ ...item, done: !item.done });
+    toast({ type: 'success', message: 'Movido com sucesso!' });
+  };
+
+  const isHoverDoneField = isOver;
+  const isHoverDoingField = isDoingOver;
 
   return (
     <TaskContainer>
-      <TaskWrapper>
+      <TaskWrapper ref={toDoRef} isDragging={isHoverDoneField}>
         <TitleStatus>TO DO</TitleStatus>
         {tasks?.map((task) => {
           const isTaskDone = task.done;
@@ -37,9 +63,12 @@ export function Task() {
             return (
               <TaskField
                 key={task.id}
+                id={task.id}
                 title={task.title}
+                cardType='done'
                 description={task.description}
                 done={task.done}
+                onDropPlayer={movePlayer}
                 onClickTask={() => handleClickTask(task.id)}
               />
             );
@@ -49,7 +78,7 @@ export function Task() {
 
       <Divisor />
 
-      <TaskWrapper>
+      <TaskWrapper ref={doneRef} isDragging={isHoverDoingField}>
         <TitleStatus>DONE</TitleStatus>
         {tasks?.map((task) => {
           const isTaskDone = task.done;
@@ -57,8 +86,11 @@ export function Task() {
             return (
               <TaskField
                 key={task.id}
+                id={task.id}
                 title={task.title}
+                cardType='doing'
                 description={task.description}
+                onDropPlayer={movePlayer}
                 done={task.done}
                 onClickTask={() => handleClickTask(task.id)}
               />

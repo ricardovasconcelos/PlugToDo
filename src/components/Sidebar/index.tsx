@@ -91,15 +91,16 @@ export const Sidebar = ({ showSidebar, onShowSidebar }: SidebarProps) => {
           description,
           done,
         });
+        toast({ type: 'success', message: 'Alterado com sucesso!' });
       } else {
         createTask({
           title,
           description,
           done,
         });
+        toast({ type: 'success', message: 'Sucesso!' });
       }
       handleCloseSidebarModal();
-      toast({ type: 'success', message: 'Sucesso!' });
     } catch (e) {
       toast({ type: 'error', message: 'Ops! Deu ruim, tente novamente!' });
     }

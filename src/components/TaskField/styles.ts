@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface TaskFieldContainerProps {
   done: boolean;
+  isDragging?: boolean;
 }
 
 export const TaskFieldContainer = styled.div<TaskFieldContainerProps>`
@@ -35,6 +36,25 @@ export const TaskFieldContainer = styled.div<TaskFieldContainerProps>`
     background-color: ${(props) =>
       props.done ? props.theme['secondary-100'] : props.theme['blue-100']};
   }
+
+  ${(props) =>
+    props.isDragging &&
+    css`
+      border: 2px dashed rgba(0, 0, 0, 0.2);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      cursor: grabbing;
+
+      h3,
+      div,
+      p {
+        opacity: 0;
+      }
+
+      &::before {
+        opacity: 0;
+    `}
 `;
 
 export const TaskDetailContainer = styled.div`

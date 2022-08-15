@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Button } from '../../components/Button';
 
 export const TaskContainer = styled.main`
@@ -11,8 +11,26 @@ export const TaskContainer = styled.main`
   }
 `;
 
-export const TaskWrapper = styled.div`
-  width: 20.75rem;
+interface TaskWrapperProps {
+  isDragging: boolean;
+}
+
+export const TaskWrapper = styled.div<TaskWrapperProps>`
+  width: 48%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  ${(props) =>
+    props.isDragging &&
+    css`
+      border: 2px dashed rgba(0, 0, 0, 0.2);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      cursor: grabbing;
+    `}
 `;
 
 export const TitleStatus = styled.h1`
