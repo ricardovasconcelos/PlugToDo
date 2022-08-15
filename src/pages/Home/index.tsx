@@ -10,7 +10,7 @@ export function Home() {
   return (
     <HomeContainer>
       <img src={Illustration} alt='' />
-      <Button width={13.3} onClick={() => navigate('/task')}>
+      <Button width={13.3} onClick={() => navigate('/tasks')}>
         INICIAR
       </Button>
     </HomeContainer>

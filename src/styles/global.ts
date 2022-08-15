@@ -29,4 +29,19 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 87.5%;
     }
   }
+  
+  .Toastify__toast-theme--colored {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .Toastify__toast-theme--colored.Toastify__toast--success {
+    background-color: ${(props) => props.theme['secondary-100']};
+
+  }
+
+  .Toastify__toast-theme--colored.Toastify__toast--error {
+    background-color: ${(props) => props.theme['red-500']};
+  }
 `;

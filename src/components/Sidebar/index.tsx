@@ -8,6 +8,9 @@ import close from '../../assets/close.svg';
 import { Switch } from '../Switch';
 
 import { useTasks } from '../../hooks/useTasks';
+import { useParams, useNavigate } from 'react-router-dom';
+
+import { toast } from '../../lib/toast';
 
 import {
   SidebarContainer,
@@ -30,7 +33,9 @@ export const Sidebar = ({ showSidebar, onShowSidebar }: SidebarProps) => {
 
   const sidebarRef = useRef<HTMLDivElement>(null);
 
-  const { createTask } = useTasks();
+  const { tasks, createTask, updateTask } = useTasks();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   const animation = useSpring({
     config: {
@@ -40,57 +45,79 @@ export const Sidebar = ({ showSidebar, onShowSidebar }: SidebarProps) => {
     transform: showSidebar ? `translateY(0%)` : `translateY(-100%)`,
   });
 
-  const keyPress = useCallback(
-    (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && showSidebar) {
-        onShowSidebar(false);
-      }
-    },
-    [onShowSidebar, showSidebar],
-  );
+  const handleCloseSidebarModal = useCallback(() => {
+    navigate('/tasks');
+    onShowSidebar(false);
+    clearSidebarInputs();
+  }, [navigate, onShowSidebar]);
 
   useEffect(() => {
+    const keyPress = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && showSidebar) {
+        handleCloseSidebarModal();
+      }
+    };
     document.addEventListener('keydown', keyPress);
     return () => document.removeEventListener('keydown', keyPress);
-  }, [keyPress]);
+  }, [handleCloseSidebarModal, showSidebar]);
 
-  function closeSidebar(event: MouseEvent<HTMLDivElement>) {
+  useEffect(() => {
+    const filteredTask = tasks.find((task) => task.id === id);
+    if (filteredTask) {
+      setTitle(filteredTask.title);
+      setDescription(filteredTask.description ?? '');
+      setDone(filteredTask.done);
+    }
+  }, [id, tasks]);
+
+  function handleClickOutsideSidebar(event: MouseEvent<HTMLDivElement>) {
     if (sidebarRef.current === event.target) {
-      onShowSidebar(false);
+      handleCloseSidebarModal();
     }
   }
 
-  function resetFormsOnCreateNewTask() {
+  function clearSidebarInputs() {
     setTitle('');
     setDescription('');
     setDone(false);
   }
 
-  function handleCreateNewTask() {
+  function handleSubmitSidebarButton() {
     try {
-      createTask({
-        title,
-        description,
-        done,
-      });
-      onShowSidebar(false);
-      resetFormsOnCreateNewTask();
+      if (hasTaskIDSelected) {
+        updateTask({
+          id,
+          title,
+          description,
+          done,
+        });
+      } else {
+        createTask({
+          title,
+          description,
+          done,
+        });
+      }
+      handleCloseSidebarModal();
+      toast({ type: 'success', message: 'Sucesso!' });
     } catch (e) {
-      console.log(e);
+      toast({ type: 'error', message: 'Ops! Deu ruim, tente novamente!' });
     }
   }
+
+  const hasTaskIDSelected = id;
 
   return (
     <>
       {showSidebar ? (
-        <SidebarContainer onClick={closeSidebar} ref={sidebarRef}>
+        <SidebarContainer onClick={handleClickOutsideSidebar} ref={sidebarRef}>
           <animated.div style={animation}>
             <SidebarWrapper>
               <SidebarHeader>
-                <CloseSidebar onClick={() => onShowSidebar(false)}>
+                <CloseSidebar onClick={handleCloseSidebarModal}>
                   <img src={close} alt='Botão para fechar modal de tarefas' />
                 </CloseSidebar>
-                <p>Nova Tarefa</p>
+                <p>{hasTaskIDSelected ? 'Editar Tarefa' : 'Nova Tarefa'}</p>
               </SidebarHeader>
 
               <SidebarContent>
@@ -114,8 +141,8 @@ export const Sidebar = ({ showSidebar, onShowSidebar }: SidebarProps) => {
               </SidebarContent>
 
               <SidebarFooter>
-                <Button width={20} onClick={handleCreateNewTask} disabled={!title}>
-                  CRIAR TAREFA
+                <Button width={20} onClick={handleSubmitSidebarButton} disabled={!title}>
+                  {hasTaskIDSelected ? 'EDITAR TAREFA' : 'CRIAR TAREFA'}
                 </Button>
               </SidebarFooter>
             </SidebarWrapper>

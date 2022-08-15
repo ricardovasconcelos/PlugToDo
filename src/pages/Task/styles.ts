@@ -11,6 +11,10 @@ export const TaskContainer = styled.main`
   }
 `;
 
+export const TaskWrapper = styled.div`
+  width: 20.75rem;
+`;
+
 export const TitleStatus = styled.h1`
   font-size: 1.5rem;
   font-weight: 400;
@@ -27,17 +31,17 @@ export const Divisor = styled.hr`
 `;
 
 export const NewTaskButton = styled(Button)`
-  position: absolute;
+  position: fixed;
   bottom: 3%;
   right: 2%;
   border-radius: 100px;
   font-size: 0.875rem;
-  line-height: 150%;
 
   display: flex;
   align-items: center;
 
   width: 6.8125rem;
+  height: 3rem;
 
   img {
     padding-right: 5px;

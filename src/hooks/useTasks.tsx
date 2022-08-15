@@ -13,6 +13,7 @@ interface TasksProviderProps {
 interface TasksContextData {
   tasks: Task[];
   createTask: (task: TaskInput) => Promise<void>;
+  updateTask: (task: Task) => void;
 }
 
 const TasksContext = createContext<TasksContextData>({} as TasksContextData);
@@ -36,7 +37,23 @@ export function TasksProvider({ children }: TasksProviderProps) {
     setTasks((oldState) => [...oldState, task]);
   }
 
-  return <TasksContext.Provider value={{ tasks, createTask }}>{children}</TasksContext.Provider>;
+  function updateTask(taskData: Task) {
+    const updateSelectedTask = {
+      id: taskData.id,
+      title: taskData.title,
+      description: taskData.description,
+      done: taskData.done,
+    };
+    const filteredTasks = tasks.filter((task) => task.id !== taskData.id);
+
+    setTasks([...filteredTasks, updateSelectedTask]);
+  }
+
+  return (
+    <TasksContext.Provider value={{ tasks, createTask, updateTask }}>
+      {children}
+    </TasksContext.Provider>
+  );
 }
 
 export function useTasks() {

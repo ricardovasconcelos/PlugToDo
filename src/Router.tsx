@@ -9,7 +9,8 @@ export function Router() {
     <Routes>
       <Route path='/' element={<DefaultLayout />}>
         <Route path='/' element={<Home />} />
-        <Route path='/task' element={<Task />} />
+        <Route path='/tasks' element={<Task />} />
+        <Route path='/tasks/:id' element={<Task />} />
       </Route>
     </Routes>
   );

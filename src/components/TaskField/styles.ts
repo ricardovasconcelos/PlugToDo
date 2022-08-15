@@ -15,6 +15,8 @@ export const TaskFieldContainer = styled.div<TaskFieldContainerProps>`
   display: flex;
   align-items: flex-start;
 
+  cursor: pointer;
+
   @media (max-width: 880px) {
     width: 17rem;
   }
