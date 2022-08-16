@@ -14,6 +14,7 @@ dist-ssr
 
 /coverage.data
 /coverage/
+.coverage*
 
 # Editor directories and files
 .vscode/*

@@ -12,6 +12,10 @@ export const SidebarContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export const SidebarWrapper = styled.div`
@@ -26,7 +30,9 @@ export const SidebarWrapper = styled.div`
   color: ${(props) => props.theme['black-100']};
 
   @media (max-width: 768px) {
-    width: 100vw;
+    width: 90vw;
+    height: 50vh;
+    border-radius: 9px;
   }
 `;
 
