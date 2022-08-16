@@ -2,6 +2,9 @@
 
 ![Gravação de Tela 2022-08-16 às 18 13 06](https://user-images.githubusercontent.com/61828136/184987268-81dfeec3-a5e7-425a-bc50-10dc1301891e.gif)
 
+## Acessar o projeto
+<a href="https://plug-to-do.vercel.app/"> PlugToDo </a>
+
 ## Documentação detalhada do projeto
 <a href="/APP.md"> Acessar documentação </a>
 
