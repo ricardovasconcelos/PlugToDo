@@ -1,9 +1,9 @@
-# Sobre o projeto
-<p align="center">
+# Uma plataforma para você adicionar e monitorar sua lista de tarefas
 
 ![Gravação de Tela 2022-08-16 às 18 13 06](https://user-images.githubusercontent.com/61828136/184987268-81dfeec3-a5e7-425a-bc50-10dc1301891e.gif)
 
-</p>
+## Documentação detalhada do projeto
+<a href="/APP.md"> Acessar documentação </a>
 
 # Como rodar o projeto
 
