@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should be able to render a Button 1`] = `
+.c0 {
+  border: 0;
+  padding: 1rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  border-radius: 6px;
+  width: 100rem;
+  cursor: pointer;
+  -webkit-transition: filter 0.2s;
+  transition: filter 0.2s;
+  -webkit-letter-spacing: 0.0781rem;
+  -moz-letter-spacing: 0.0781rem;
+  -ms-letter-spacing: 0.0781rem;
+  letter-spacing: 0.0781rem;
+}
+
+.c0:hover {
+  -webkit-filter: opacity(90%);
+  filter: opacity(90%);
+}
+
+<button
+  class="c0"
+  width="100"
+>
+  Criar Tarefa
+</button>
+`;

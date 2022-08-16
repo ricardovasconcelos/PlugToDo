@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should be able to render a Header 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 3.75rem;
+}
+
+.c0 img {
+  margin-left: 1rem;
+}
+
+.c0 a:focus {
+  box-shadow: none;
+}
+
+<header
+  class="c0"
+>
+  <a
+    href="/"
+  >
+    <img
+      alt="Plug Logo"
+      src="SvgrURL"
+    />
+  </a>
+</header>
+`;

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should be able to render a Header 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c0 p {
+  font-weight: bold;
+}
+
+.c1 {
+  position: relative;
+}
+
+.c4 {
+  width: 2.3125rem;
+  height: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.c4::after {
+  content: '';
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  margin-top: -2px;
+  box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.1);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.c2 {
+  width: 2.625rem;
+  height: 1.625rem;
+  opacity: 0;
+  z-index: 1;
+  border-radius: 15px;
+}
+
+.c2:checked + .c3::after {
+  content: '';
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  margin-left: 21px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+<div
+  class="c0"
+  data-testid="switch-container"
+>
+  <p>
+    switch label
+  </p>
+  <div
+    class="c1"
+  >
+    <input
+      class="c2"
+      id="checkbox"
+      type="checkbox"
+    />
+    <label
+      class="c3 c4"
+      for="checkbox"
+    />
+  </div>
+</div>
+`;

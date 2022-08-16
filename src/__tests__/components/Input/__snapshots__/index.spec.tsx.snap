@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should be able to render a Input 1`] = `
+.c0 {
+  border: 1px solid;
+  height: 3rem;
+  border-radius: 4px;
+  padding: 1rem;
+  line-height: 150%;
+  width: 100%;
+}
+
+.c0::-webkit-input-placeholder {
+  font-weight: bold;
+}
+
+.c0::-moz-placeholder {
+  font-weight: bold;
+}
+
+.c0:-ms-input-placeholder {
+  font-weight: bold;
+}
+
+.c0::placeholder {
+  font-weight: bold;
+}
+
+.c0:focus {
+  border: 0;
+}
+
+<input
+  class="c0"
+  placeholder="input testing"
+/>
+`;
