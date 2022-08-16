@@ -10,5 +10,8 @@ export const HomeContainer = styled.div`
 
   img {
     margin-bottom: 5rem;
+    @media (max-width: 768px) {
+      width: 18.75rem;
+    }
   }
 `;
